@@ -43,27 +43,40 @@ DATA_DIR = PROJECT_ROOT / "data"
 RAW_DATA_DIR = DATA_DIR / "raw"
 PROCESSED_DATA_DIR = DATA_DIR / "processed"
 
+
 DATASETS = {
-    "personality": {
+    "student_personality": {
         "name": "Student Personality Dataset",
-        "path": RAW_DATA_DIR / "Student_Personality.csv",
-        "file_type": "csv",
-        "target_column": None,  # Set after inspecting columns
-        "feature_group": "personality_riasec",
+        "path": RAW_DATA_DIR / "Student_Personality_Original.csv",
+        "format": "csv",
+        "target": (
+            "Which of the following career fields are you "
+            "most interested in?"
+        ),
+        "task_note": (
+            "Predicts self-reported career preference, "
+            "not a verified employment outcome."
+        ),
     },
-    "career": {
+    "career_data": {
         "name": "Student Career Prediction Dataset",
         "path": RAW_DATA_DIR / "career_data.csv",
-        "file_type": "csv",
-        "target_column": None,  # Set after inspecting columns
-        "feature_group": "academic_skills_riasec",
+        "format": "csv",
+        "target": "Career",
+        "task_note": (
+            "Verify how career labels were generated before "
+            "interpreting model performance."
+        ),
     },
     "career_interest_trends": {
         "name": "Career Interest Trends Dataset",
-        "path": RAW_DATA_DIR / "DataSet_Career_Interest_Trends.xlsx",
-        "file_type": "xlsx",
-        "target_column": None,  # Verify the actual target column
-        "feature_group": "riasec_questionnaire",
+        "path": RAW_DATA_DIR / "DataSet Career Interest Trends.xlsx",
+        "format": "xlsx_riasec",
+        "target": "career_interest_code",
+        "task_note": (
+            "Career-interest labels may be derived from the "
+            "same RIASEC questionnaire used as input."
+        ),
     },
 }
 
@@ -313,6 +326,10 @@ def create_project_directories():
 
     for directory in directories:
         directory.mkdir(parents=True, exist_ok=True)
+
+
+# Compatibility alias used by data_loader.py
+create_directories = create_project_directories
 
 
 def validate_dataset_paths():

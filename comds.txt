@@ -1,0 +1,12 @@
+checking environment: -
+conda info --envs
+python --version
+python -m pip list
+
+install library: -
+pip install -r requirements.txt
+
+running: -
+python -m src.data_loader
+python run_experiments.py
+python -m pytest tests -v
