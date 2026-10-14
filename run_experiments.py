@@ -39,6 +39,13 @@ y_train = result["y_train"]
 y_test = result["y_test"]
 
 print("Experiment:", result["experiment_name"])
-print("Features:", result["feature_columns"])
+
+"""
+print("Features:", result["feature_columns"]) 
+"""
+"""
+Fix the RIASEC sensitivity experiment: -
+Only run this sensitivity experiment after checking how the Career labels were generated."""
+
 print("Training shape:", X_train.shape)
 print("Testing shape:", X_test.shape)

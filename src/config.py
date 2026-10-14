@@ -44,18 +44,19 @@ RAW_DATA_DIR = DATA_DIR / "raw"
 PROCESSED_DATA_DIR = DATA_DIR / "processed"
 
 
+
 DATASETS = {
     "student_personality": {
         "name": "Student Personality Dataset",
-        "path": RAW_DATA_DIR / "Student_Personality_Original.csv",
+        "path": RAW_DATA_DIR / "Student_Personality.csv",
         "format": "csv",
         "target": (
             "Which of the following career fields are you "
             "most interested in?"
         ),
         "task_note": (
-            "Predicts self-reported career preference, "
-            "not a verified employment outcome."
+            "Predict self-reported career preference, not "
+            "verified employment outcomes."
         ),
     },
     "career_data": {
@@ -65,17 +66,17 @@ DATASETS = {
         "target": "Career",
         "task_note": (
             "Verify how career labels were generated before "
-            "interpreting model performance."
+            "interpreting predictive performance."
         ),
     },
     "career_interest_trends": {
         "name": "Career Interest Trends Dataset",
-        "path": RAW_DATA_DIR / "DataSet Career Interest Trends.xlsx",
+        "path": RAW_DATA_DIR / "DataSet_Career_Interest_Trends.xlsx",
         "format": "xlsx_riasec",
         "target": "career_interest_code",
         "task_note": (
-            "Career-interest labels may be derived from the "
-            "same RIASEC questionnaire used as input."
+            "The career-interest code may be derived from "
+            "the same RIASEC questionnaire used as input."
         ),
     },
 }
@@ -331,6 +332,9 @@ def create_project_directories():
 # Compatibility alias used by data_loader.py
 create_directories = create_project_directories
 
+def create_directories():
+    """Compatibility wrapper for data_loader.py."""
+    create_project_directories()
 
 def validate_dataset_paths():
     """

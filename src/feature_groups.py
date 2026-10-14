@@ -165,32 +165,30 @@ def _is_riasec_score(column: object) -> bool:
     return compact in RIASEC_NAMES
 
 
+
 def _is_questionnaire_item(column: object) -> bool:
-    """
-    Detect questionnaire-item columns.
+    """Recognize common questionnaire-item column names."""
 
-    Supports common names such as:
-    1, Q1, Q_1, Item_1, Question_1, and item1.
-
-    Do not assume all numeric columns are questionnaire items.
-    """
+    import re
 
     name = _normalise_name(column)
+    compact = name.replace(" ", "").replace("-", "_")
 
     if name.isdigit():
         return True
-
-    compact = name.replace(" ", "").replace("-", "_")
-
-    import re
 
     patterns = (
         r"q_?\d+",
         r"item_?\d+",
         r"question_?\d+",
+        r"item_[riasec]_\d+",
+        r"question_[riasec]_\d+",
     )
 
-    return any(re.fullmatch(pattern, compact) for pattern in patterns)
+    return any(
+        re.fullmatch(pattern, compact)
+        for pattern in patterns
+    )
 
 
 def _is_derived_riasec_column(column: object) -> bool:

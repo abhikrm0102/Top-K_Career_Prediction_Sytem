@@ -1,4 +1,4 @@
-jupyter
+
 numpy
 pandas
 scikit-learn
@@ -10,13 +10,3 @@ xgboost
 streamlit
 shap
 pytest
-tensorflow
-keras
-flask
-requests
-beautifulsoup4
-sqlalchemy
-
-
-
-
