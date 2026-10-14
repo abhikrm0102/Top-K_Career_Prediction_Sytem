@@ -1,2 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Virtual environment
 env/
-env/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Generated artifacts
+models/saved_models/
+models/preprocessors/
+results/metrics/
+results/figures/
+results/reports/
+results/project.log
+data/processed/
+
+# Environment variables and secrets
+.env
+.env.*
+
+# OS files
+.DS_Store
+Thumbs.db
