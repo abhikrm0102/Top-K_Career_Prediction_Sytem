@@ -18,10 +18,10 @@ from dataclasses import dataclass
 from typing import Dict, List, Optional, Sequence, Tuple
 
 import warnings
-import numpy as np
-import pandas as pd
+import numpy as np  # type: ignore
+import pandas as pd  # type: ignore
 
-from sklearn.model_selection import (
+from sklearn.model_selection import (  # type: ignore
     GroupShuffleSplit,
     train_test_split,
 )
